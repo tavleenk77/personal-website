@@ -1,0 +1,428 @@
+/*
+  index.css
+  --------------------------------------------------------------
+  All styling for the page lives here using plain, beginner-friendly CSS.
+  We use CSS variables (custom properties) so we can switch between
+  light and dark mode by changing a few values in one place.
+*/
+
+/* Import two clean, modern Google Fonts:
+   - Poppins for headings
+   - Inter for body text */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap");
+
+/*
+  LIGHT MODE (default) COLORS
+  These variables hold our color palette. The values here are used
+  whenever the page is in light mode.
+*/
+:root {
+  --bg: #fdf8f4; /* warm white background */
+  --card: #ffffff; /* card background */
+  --text: #3d3535; /* main text color (soft dark brown) */
+  --muted: #8a7f7a; /* secondary text color */
+  --accent: #f7b8c8; /* soft pink (primary accent) */
+  --accent-strong: #ef93ac; /* a slightly stronger pink for hover */
+  --cream: #fbeede; /* cream tone */
+  --yellow: #fdeec2; /* pastel yellow */
+  --green: #cfe6cf; /* subtle green accent */
+  --border: #f0e4dc; /* soft border color */
+  --shadow: rgba(160, 120, 120, 0.12); /* soft shadow color */
+}
+
+/*
+  DARK MODE COLORS
+  When the <body> has the class "dark", these variable values
+  override the light ones above. This is the core of our theme toggle.
+*/
+body.dark {
+  --bg: #211d20;
+  --card: #2c2629;
+  --text: #f3eae6;
+  --muted: #b3a39d;
+  --accent: #f7b8c8;
+  --accent-strong: #f7b8c8;
+  --cream: #3a3034;
+  --yellow: #4a3f2e;
+  --green: #2f4036;
+  --border: #3c3338;
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* Basic reset so spacing is predictable across browsers. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+  Body styling.
+  The "transition" makes the color change smoothly when toggling themes.
+*/
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+  min-height: 100vh;
+}
+
+/* The page is centered with a max width so it looks good on big screens. */
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  position: relative;
+}
+
+/*
+  FADE-IN ANIMATION
+  This gently fades and slides the content in when the page first loads.
+*/
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.7s ease both;
+}
+
+/* ---------- THEME TOGGLE BUTTON ---------- */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--card);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition:
+    transform 0.2s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+/* ---------- PROFILE SECTION ---------- */
+.profile {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Wrapper lets us position a little perched bird relative to the photo. */
+.profile-img-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+/* The circular profile image. object-fit keeps the photo from stretching.
+   Sized to be the clear focal point of the page. */
+.profile-img {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--accent);
+  background-color: var(--cream);
+  box-shadow: 0 10px 28px var(--shadow);
+}
+
+.profile-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  color: var(--text);
+}
+
+/* Row that holds the name and the little conure beside it. */
+.name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.profile-bio {
+  color: var(--muted);
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  white-space: pre-line; /* keeps the line break in the bio text */
+}
+
+/* ---------- LINKS SECTION ---------- */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*
+  Each link is a card.
+  We remove the default underline and lay it out as a row: icon + text.
+*/
+.link-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 3px 12px var(--shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Subtle hover effect: lift the card and highlight its border. */
+.link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px var(--shadow);
+  border-color: var(--accent);
+}
+
+/* Keyboard users get a clear focus outline for accessibility. */
+.link-card:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+/* Small rounded badge that holds the link's icon. */
+.link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: var(--cream);
+  color: var(--accent-strong);
+}
+
+/* The icon badge gently fills with pink when the card is hovered. */
+.link-card:hover .link-icon {
+  background-color: var(--accent);
+  color: var(--card);
+}
+
+/* Stacks the title and description vertically next to the icon. */
+.link-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.link-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+/* ---------- FEATHER DIVIDERS ---------- */
+/* A small centered row of pixel feathers used to separate sections. */
+.feather-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+
+.feather-divider .pixel-feather {
+  position: static; /* override the absolute positioning used elsewhere */
+  width: 20px;
+  height: 20px;
+  opacity: 0.55;
+  image-rendering: pixelated;
+}
+
+/* The middle feather is flipped and slightly bigger for a nice symmetry. */
+.feather-divider .pixel-feather:nth-child(2) {
+  width: 24px;
+  height: 24px;
+  transform: scaleX(-1);
+  opacity: 0.75;
+}
+
+/* ---------- CURRENTLY SECTION ---------- */
+.currently-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 3px 12px var(--shadow);
+}
+
+.currently-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.currently-list {
+  list-style: none; /* remove default bullets */
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.currently-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.currently-emoji {
+  font-size: 1.1rem;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  text-align: center;
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- DECORATIVE PIXEL BIRDS & FEATHERS ---------- */
+/*
+  Small pixel-art sprites scattered around the page as easter eggs.
+  image-rendering: pixelated keeps the crisp, retro pixel edges when the
+  sprites are scaled down. They are decorative only, so pointer-events
+  is disabled and they never interfere with the content.
+*/
+.pixel-bird,
+.pixel-feather {
+  position: absolute;
+  image-rendering: pixelated;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+
+/* Cockatiel perched on the LEFT edge of the profile photo.
+   The sprite already faces right, so it looks toward the photo. */
+.pixel-bird--perch {
+  width: 46px;
+  height: 46px;
+  top: -22px;
+  left: -12px;
+  right: auto;
+  transform: none;
+  animation: bobble 3.4s ease-in-out infinite;
+}
+
+/* Small green-cheek conure sitting next to the name header. */
+.pixel-bird--name {
+  position: static; /* sits inline within the name row */
+  width: 34px;
+  height: 34px;
+  animation: bobble 3.8s ease-in-out infinite;
+}
+
+/* Floating pixel feathers in the background. Low opacity so they stay subtle. */
+.pixel-feather {
+  width: 26px;
+  height: 26px;
+  opacity: 0.5;
+}
+
+.pixel-feather--one {
+  top: 6rem;
+  right: 1rem;
+  transform: rotate(15deg);
+  animation: float 6s ease-in-out infinite;
+}
+
+.pixel-feather--two {
+  top: 18rem;
+  left: 0.5rem;
+  transform: rotate(-25deg);
+  animation: float 7.5s ease-in-out infinite;
+}
+
+/* Gentle up-and-down bobbing for the perched birds. */
+@keyframes bobble {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+/* Slow drifting motion for the floating feathers. */
+@keyframes float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+/* Respect users who prefer reduced motion: stop the gentle animations. */
+@media (prefers-reduced-motion: reduce) {
+  .pixel-bird,
+  .pixel-feather,
+  .fade-in {
+    animation: none;
+  }
+}
+
+/* ---------- SMALL SCREENS ---------- */
+/* Slightly smaller text and image on phones for a comfortable fit. */
+@media (max-width: 480px) {
+  .profile-name {
+    font-size: 1.5rem;
+  }
+  .profile-img {
+    width: 128px;
+    height: 128px;
+  }
+  .pixel-bird--perch {
+    width: 38px;
+    height: 38px;
+    top: -18px;
+    left: -10px;
+  }
+  /* Trim a background feather on small screens to avoid clutter. */
+  .pixel-feather--two {
+    display: none;
+  }
+}
