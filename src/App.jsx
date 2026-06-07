@@ -1,6 +1,7 @@
 // App.jsx 
 
 import { useState, useEffect } from "react"
+const BASE = import.meta.env.BASE_URL;
 // -----------------------------------------------------------------------
 // LINKS DATA
 const links = [
@@ -134,13 +135,13 @@ function App() {
               Replace /profile-placeholder.png with the real photo later. */}
       <img
         className="profile-img"
-        src="/tavleen-birds.jpg"
+        src={`${BASE}tavleen-birds.jpg`}
         alt="Tavleen Kaur holding one of her birds"
       />          {/* A tiny white cockatiel perched on the LEFT edge of the
               profile photo, facing right toward the photo. */}
       <img
         className="pixel-bird pixel-bird--perch"
-        src="/pixel-cockatiel-white.png"
+        src={`${BASE}pixel-cockatiel-white.png`}
         alt=""
         aria-hidden="true"
       />        </div>
@@ -149,7 +150,7 @@ function App() {
         <div className="name-row">
           <h1 className="profile-name">Tavleen Kaur</h1>
           <img className="pixel-bird pixel-bird--name"
-            src="/pixel-conure.png" />
+            src={`${BASE}pixel-conure.png`} />
         </div>
 
         <p className="profile-bio">
@@ -161,9 +162,9 @@ function App() {
 
       {/* A row of tiny pixel feathers used as a gentle section divider. */}
       <div className="feather-divider" aria-hidden="true">
-      <img className="pixel-feather" src="/pixel-feather.png" alt="" />
-      <img className="pixel-feather" src="/pixel-feather.png" alt="" />
-      <img className="pixel-feather" src="/pixel-feather.png" alt="" />      </div>
+      <img className="pixel-feather" src={`${BASE}pixel-feather.png`} alt="" />
+      <img className="pixel-feather" src={`${BASE}pixel-feather.png`} alt="" />
+      <img className="pixel-feather" src={`${BASE}pixel-feather.png`} alt="" />      </div>
 
       {/* LINKS SECTION
           The "key" prop helps React keep track of each item in the list. */}
@@ -189,9 +190,9 @@ rel={link.url !== "#" ? "noopener noreferrer" : undefined}          >
 
       {/* A second feather divider before the "Currently" section. */}
       <div className="feather-divider" aria-hidden="true">
-        <img className="pixel-feather" src="./pixel-feather.png" alt="" />
-        <img className="pixel-feather" src="./pixel-feather.png" alt="" />
-        <img className="pixel-feather" src="./pixel-feather.png" alt="" />
+        <img className="pixel-feather" src="/pixel-feather.png" alt="" />
+        <img className="pixel-feather" src="/pixel-feather.png" alt="" />
+        <img className="pixel-feather" src="npm run build/pixel-feather.png" alt="" />
       </div>
 
       {/* CURRENTLY SECTION
