@@ -1,10 +1,6 @@
 // App.jsx 
 
 import { useState, useEffect } from "react"
-import tavleenBirds from "../tavleen-birds.jpg"
-import pixelConure from "../pixel-conure.png"
-import pixelCockatielWhite from "../pixel-cockatiel-white.png"
-import pixelFeather from "../pixel-feather.png"
 // -----------------------------------------------------------------------
 // LINKS DATA
 const links = [
@@ -138,13 +134,13 @@ function App() {
               Replace /profile-placeholder.png with the real photo later. */}
       <img
         className="profile-img"
-        src={tavleenBirds}
+        src="/tavleen-birds.jpg"
         alt="Tavleen Kaur holding one of her birds"
       />          {/* A tiny white cockatiel perched on the LEFT edge of the
               profile photo, facing right toward the photo. */}
       <img
         className="pixel-bird pixel-bird--perch"
-        src={pixelCockatielWhite}
+        src="/pixel-cockatiel-white.png"
         alt=""
         aria-hidden="true"
       />        </div>
@@ -153,7 +149,7 @@ function App() {
         <div className="name-row">
           <h1 className="profile-name">Tavleen Kaur</h1>
           <img className="pixel-bird pixel-bird--name"
-            src={pixelConure} />
+            src="/pixel-conure.png" />
         </div>
 
         <p className="profile-bio">
@@ -165,10 +161,9 @@ function App() {
 
       {/* A row of tiny pixel feathers used as a gentle section divider. */}
       <div className="feather-divider" aria-hidden="true">
-        <img className="pixel-feather" src={pixelFeather} alt="" />
-        <img className="pixel-feather" src={pixelFeather} alt="" />
-        <img className="pixel-feather" src={pixelFeather} alt="" />
-      </div>
+      <img className="pixel-feather" src="/pixel-feather.png" alt="" />
+      <img className="pixel-feather" src="/pixel-feather.png" alt="" />
+      <img className="pixel-feather" src="/pixel-feather.png" alt="" />      </div>
 
       {/* LINKS SECTION
           The "key" prop helps React keep track of each item in the list. */}
