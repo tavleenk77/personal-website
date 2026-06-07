@@ -190,9 +190,9 @@ rel={link.url !== "#" ? "noopener noreferrer" : undefined}          >
 
       {/* A second feather divider before the "Currently" section. */}
       <div className="feather-divider" aria-hidden="true">
-        <img className="pixel-feather" src="/pixel-feather.png" alt="" />
-        <img className="pixel-feather" src="/pixel-feather.png" alt="" />
-        <img className="pixel-feather" src="npm run build/pixel-feather.png" alt="" />
+        <img className="pixel-feather" src={`${BASE}pixel-feather.png`} alt="" />
+        <img className="pixel-feather" src={`${BASE}pixel-feather.png`} alt="" />
+        <img className="pixel-feather" src={`${BASE}pixel-feather.png`} alt="" />
       </div>
 
       {/* CURRENTLY SECTION
