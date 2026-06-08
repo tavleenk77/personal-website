@@ -144,6 +144,7 @@ body {
   height: 168px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 15%;
   border: 5px solid var(--accent);
   background-color: var(--cream);
   box-shadow: 0 10px 28px var(--shadow);
